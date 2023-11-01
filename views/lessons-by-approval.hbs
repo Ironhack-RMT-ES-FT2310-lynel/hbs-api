@@ -1,0 +1,17 @@
+<div>
+
+  <h3>Estas son las lecciones por su aprobación</h3>
+
+  {{#each this.filteredLessons}}
+
+    <div>
+      <h5>{{this.topic}}</h5>
+      <p>{{this.description}}</p>
+      <p>{{this.bootcamp}}</p>
+    </div>
+
+    <hr>
+
+  {{/each}}
+
+</div>

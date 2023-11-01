@@ -1,0 +1,24 @@
+<div>
+
+  {{this}}
+  {{!-- this, fuera de un bucle, apunta al objeto que se esta pasando en el res.render --}}
+
+  <h2>Nuestra pagina es sobre {{this.schoolName}}</h2>
+
+  <p>Podras ver todos los cursos que tenemos disponibles</p>
+
+  <p>Nuestro lead teacher es: {{this.leadTeacher}}</p>
+
+  <div>
+    {{!-- {{this.staff}} --}}
+
+    {{#each this.staff}}
+
+      <li>{{this}}</li>
+      {{!-- dentro de un bucle, this apunta a CADA elemento del array --}}
+
+    {{/each}}
+
+  </div>
+
+</div>
