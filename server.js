@@ -11,6 +11,9 @@ app.set("views", __dirname + "/views/")
 // requerimos la data usada en la pagina
 const lessonsData = require("./data/lessons-data.js")
 
+const DogApi = require('doggo-api-wrapper');
+const myDog = new DogApi();
+
 app.get('/', (req, res) => {
   // res.send('Hello World!')
 
@@ -28,7 +31,7 @@ app.get("/about", (req, res) => {
   }
 
   res.render("about.hbs", data)
-  // la data que pasamos al render SIEMPRE deberia ser un objeto
+  // ! la data que pasamos al render SIEMPRE deberia ser un objeto
 })
 
 
@@ -75,6 +78,26 @@ app.get("/lessons/by-approval/:aprovedType", (req, res) => {
 // 3. renderizar la vista y probar que funciona
 // 4. terminar la funcionalidad de la data a enviar
 // 5. renderizar la data en la vista
+
+
+app.get("/dog/random", (req, res) => {
+
+  myDog.getARandomDog()
+  .then((response) => {
+    console.log(response)
+
+    res.render("dogs/random.hbs", {
+      dogImage: response.message
+    })
+    
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+
+
+
+})
 
 
 const port = 3000
